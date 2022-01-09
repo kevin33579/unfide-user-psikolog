@@ -15,7 +15,7 @@ class _SyaratDanKetentuanState extends State<SyaratDanKetentuan> {
         leading: new IconButton(
           icon: new Icon(Icons.arrow_back_ios, color: Colors.grey),
           onPressed: () {
-            Navigator.popAndPushNamed(context, MainMenu.routeName);
+            Navigator.popAndPushNamed(context, PsikologMainMenu.routeName);
           },
         ),
         title: Text("Syarat dan Ketentuan"),

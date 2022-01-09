@@ -37,14 +37,20 @@ class _ProfilePsikologState extends State<ProfilePsikolog> {
             ),
           ),
           ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pushReplacementNamed(
+                    context, UserEditProfile.routeName);
+              },
               style: ElevatedButton.styleFrom(
                 primary: Color(0xffd09484),
                 onPrimary: Colors.white,
               ),
               child: Text('Edit Profile')),
           ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pushReplacementNamed(
+                    context, psikologEditJadwal.routeName);
+              },
               style: ElevatedButton.styleFrom(
                 primary: Color(0xffd09484),
                 onPrimary: Colors.white,
@@ -52,9 +58,7 @@ class _ProfilePsikologState extends State<ProfilePsikolog> {
               child: Text('Edit Jadwal')),
           Expanded(
             child: ListView(
-              children: [
-
-              ],
+              children: [],
             ),
           ),
         ]));

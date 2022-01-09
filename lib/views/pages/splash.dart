@@ -22,9 +22,8 @@ class _SplashState extends State<Splash> {
   void checkAuth() async {
     FirebaseAuth auth = FirebaseAuth.instance;
     if (auth.currentUser != null) {
-      Navigator.pushReplacementNamed(context, MainMenu.routeName);
-      ActivityServices.showToast(
-          "Welcome back ", Colors.cyan);
+      Navigator.pushReplacementNamed(context, PsikologMainMenu.routeName);
+      ActivityServices.showToast("Welcome back ", Colors.cyan);
     } else {
       Navigator.pushReplacementNamed(context, Login.routeName);
     }

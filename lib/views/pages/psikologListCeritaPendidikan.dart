@@ -4,12 +4,14 @@ class ListCeritaPendidikanPsikolog extends StatefulWidget {
   static const String routeName = "/listceritapendidikanpsikolog";
 
   @override
-  _ListCeritaPendidikanPsikologState createState() => _ListCeritaPendidikanPsikologState();
+  _ListCeritaPendidikanPsikologState createState() =>
+      _ListCeritaPendidikanPsikologState();
 }
 
-class _ListCeritaPendidikanPsikologState extends State<ListCeritaPendidikanPsikolog> {
+class _ListCeritaPendidikanPsikologState
+    extends State<ListCeritaPendidikanPsikolog> {
   CollectionReference pendidikanCollection =
-  FirebaseFirestore.instance.collection("pendidikan");
+      FirebaseFirestore.instance.collection("pendidikan");
 
   Widget buildBody() {
     return Container(
@@ -49,8 +51,8 @@ class _ListCeritaPendidikanPsikologState extends State<ListCeritaPendidikanPsiko
         backgroundColor: Color(0xffd09484),
         leading: new IconButton(
           icon: new Icon(Icons.arrow_back_ios, color: Colors.grey),
-          onPressed: (){
-            Navigator.popAndPushNamed(context,MainMenu.routeName);
+          onPressed: () {
+            Navigator.popAndPushNamed(context, PsikologMainMenu.routeName);
           },
         ),
         title: Text("Pendidikan"),

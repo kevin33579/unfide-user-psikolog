@@ -50,7 +50,7 @@ class _ListCeritaCDLPsikologState extends State<ListCeritaCDLPsikolog> {
         leading: new IconButton(
           icon: new Icon(Icons.arrow_back_ios, color: Colors.grey),
           onPressed: () {
-            Navigator.popAndPushNamed(context, MainMenu.routeName);
+            Navigator.popAndPushNamed(context, PsikologMainMenu.routeName);
           },
         ),
         title: Text("Cinta dan Logika"),

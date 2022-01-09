@@ -24,7 +24,7 @@ class _UserEditProfileState extends State<UserEditProfile> {
         leading: new IconButton(
           icon: new Icon(Icons.arrow_back_ios, color: Colors.black),
           onPressed: () {
-            Navigator.popAndPushNamed(context, MainMenu.routeName);
+            Navigator.popAndPushNamed(context, PsikologMainMenu.routeName);
           },
         ),
         title: Text("Edit Profile"),
@@ -67,7 +67,7 @@ class _UserEditProfileState extends State<UserEditProfile> {
                               border: OutlineInputBorder(),
                             ),
                             autovalidateMode:
-                            AutovalidateMode.onUserInteraction,
+                                AutovalidateMode.onUserInteraction,
                             validator: (value) {
                               if (value!.isEmpty) {
                                 return "Please fill the field!!";
@@ -88,7 +88,7 @@ class _UserEditProfileState extends State<UserEditProfile> {
                               border: OutlineInputBorder(),
                             ),
                             autovalidateMode:
-                            AutovalidateMode.onUserInteraction,
+                                AutovalidateMode.onUserInteraction,
                             validator: (value) {
                               if (value!.isEmpty) {
                                 return "Please fill the field!!";
@@ -108,7 +108,9 @@ class _UserEditProfileState extends State<UserEditProfile> {
                                 setState(() {
                                   isLoading = true;
                                 });
-                                await AuthServices.UpdateUserList(ctrlName.text,ctrlPhone.text).then((value) {
+                                await AuthServices.UpdateUserList(
+                                        ctrlName.text, ctrlPhone.text)
+                                    .then((value) {
                                   if (value == "success") {
                                     setState(() {
                                       isLoading = false;
@@ -140,7 +142,6 @@ class _UserEditProfileState extends State<UserEditProfile> {
                               elevation: 0,
                             ),
                           ),
-
                         ],
                       ))
                 ],

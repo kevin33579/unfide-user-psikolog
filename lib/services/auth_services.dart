@@ -2,12 +2,12 @@ part of 'services.dart';
 
 class AuthServices {
   static FirebaseAuth auth = FirebaseAuth.instance;
-  static CollectionReference userCollection =
-      FirebaseFirestore.instance.collection("users");
+  static CollectionReference psikologCollection =
+      FirebaseFirestore.instance.collection("psikologs");
   static DocumentReference? userDoc;
-  final dbref = FirebaseFirestore.instance.collection('users');
+  final dbref = FirebaseFirestore.instance.collection('psikologs');
 
-  static Future<String> SignUp(Users users) async {
+  static Future<String> SignUp(Psikologs psikologs) async {
     await Firebase.initializeApp();
     String dateNow = ActivityServices.dateNow();
     String msg = "";
@@ -15,21 +15,20 @@ class AuthServices {
     String uid = "";
 
     UserCredential userCredential = await auth.createUserWithEmailAndPassword(
-        email: users.email, password: users.password);
+        email: psikologs.email, password: psikologs.password);
     uid = userCredential.user!.uid;
     token = (await FirebaseMessaging.instance.getToken())!;
 
-    await userCollection.doc(uid).set({
+    await psikologCollection.doc(uid).set({
       "uid": uid,
-      "name": users.name,
-      "phone": users.phone,
-      "email": users.email,
-      "password": users.password,
+      "name": psikologs.name,
+      "phone": psikologs.phone,
+      "email": psikologs.email,
+      "password": psikologs.password,
       "token": token,
       'isOn': '0',
       "createdAt": dateNow,
       "updatedAt": dateNow,
-      "role": users.role,
     }).then((value) {
       msg = "success";
     }).catchError((onError) {
@@ -49,15 +48,12 @@ class AuthServices {
     String token = "";
     // var roole = (await FirebaseFirestore.instance.collection('users').doc(uid).collection('role').doc().get()).data().toString();
 
-
     UserCredential userCredential =
         await auth.signInWithEmailAndPassword(email: email, password: password);
     uid = userCredential.user!.uid;
     token = (await FirebaseMessaging.instance.getToken())!;
 
-
-
-    await userCollection.doc(uid).update({
+    await psikologCollection.doc(uid).update({
       // "role": roole,
       "isOn": "1",
       "token": token,
@@ -77,7 +73,7 @@ class AuthServices {
     String uid = auth.currentUser!.uid;
 
     await auth.signOut().whenComplete(() {
-      userCollection.doc(uid).update({
+      psikologCollection.doc(uid).update({
         'isOn': '0',
         "token": "-",
         "updatedAt": dateNow,
@@ -87,9 +83,9 @@ class AuthServices {
     return true;
   }
 
-  static Future UpdateUserList(String name,String phone) async{
+  static Future UpdateUserList(String name, String phone) async {
     String uid = auth.currentUser!.uid;
-    return await userCollection.doc(uid).update({
+    return await psikologCollection.doc(uid).update({
       "name": name,
       "phone": phone,
       "uid": uid,
